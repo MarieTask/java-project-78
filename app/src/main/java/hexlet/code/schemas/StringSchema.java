@@ -4,24 +4,41 @@ import hexlet.code.MinLength;
 import hexlet.code.NotNull;
 import hexlet.code.Value;
 
-public class StringSchema {
+public class StringSchema extends BaseSchema{
 
-    public void string() {
-
-    }
+    private boolean isRequired;
+    private boolean isContains;
+    private String content;
+    private int stringLength;
 
     @NotNull
-    public void required() {
-
+    public StringSchema required() {
+        isRequired = true;
+        return this;
     }
 
     @MinLength
-    public void minLength() {
-
+    public StringSchema minLength(int minLength) {
+        stringLength = minLength;
+        return this;
     }
 
     @Value
-    public void contains() {
+    public StringSchema contains(String substring) {
+        isContains = content.contains(substring);
+            return this;
+        }
 
+    public boolean isValid(String content) {
+        if (isRequired && content == null) {
+            return false;
+        }
+        if (content != null && content.length() < stringLength) {
+            return false;
+        }
+        if (content != null && !isContains) {
+            return false;
+        }
+        return true;
     }
 }
