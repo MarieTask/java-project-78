@@ -29,11 +29,15 @@ public class StringSchema extends BaseSchema{
             return this;
         }
 
-    public boolean isValid(String content) {
+    public boolean isValid(Object content) {
+        if (content instanceof String || content instanceof Integer || content == null 
+        || content == "") {
+            return true;
+        }
         if (isRequired && content == null) {
             return false;
         }
-        if (content != null && content.length() < stringLength) {
+        if (content != null && content.toString().length() < stringLength) {
             return false;
         }
         if (content != null && !isContains) {
