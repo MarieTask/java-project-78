@@ -30,10 +30,6 @@ public class StringSchema extends BaseSchema{
         }
 
     public boolean isValid(Object content) {
-        if (content instanceof String || content instanceof Integer || content == null 
-        || content == "") {
-            return true;
-        }
         if (isRequired && content == null) {
             return false;
         }

@@ -16,10 +16,12 @@ public class TestValidator {
         // Пока не вызван метод required(), null и пустая строка считаются валидным
         assertTrue(schema.isValid(""));
         assertTrue(schema.isValid(null));
+        assertTrue(schema.isValid(5));
 
         schema.required();
         assertFalse(schema.isValid(null));
         assertFalse(schema.isValid(""));
+        assertFalse(schema.isValid(5));
 
         schema.minLength(7);
         assertTrue(schema.isValid("what does the fox say"));
