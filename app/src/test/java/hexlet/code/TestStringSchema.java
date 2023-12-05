@@ -32,7 +32,7 @@ public class TestStringSchema {
         schema.required();
         assertFalse(schema.isValid(null));
         assertFalse(schema.isValid(""));
-        assertTrue(schema.isValid(RANDOM_INTEGER));
+        assertFalse(schema.isValid(RANDOM_INTEGER));
         assertTrue(schema.isValid("String"));
     }
 
