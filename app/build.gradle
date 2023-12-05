@@ -1,8 +1,6 @@
 plugins {
     id 'application'
     id 'checkstyle'
-    id 'com.adarshr.test-logger' version '3.0.0'
-    id 'com.github.ben-manes.versions' version '0.39.0'
     id 'jacoco'
 }
 
@@ -18,14 +16,17 @@ application {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-    testImplementation 'org.assertj:assertj-core:3.22.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
 }
 
 test {
     useJUnitPlatform()
-    finalizedBy jacocoTestReport
+}
+
+compileJava {
+    options.release = 20
 }
 
 jacocoTestReport {
