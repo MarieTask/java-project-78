@@ -34,6 +34,7 @@ public class TestNumberSchema {
         assertFalse(schema.isValid(null));
         assertFalse(schema.isValid(""));
         assertTrue(schema.isValid(RANDOM_INTEGER));
+        assertTrue(schema.isValid(LESS_ZERO));
     }
 
     @Test

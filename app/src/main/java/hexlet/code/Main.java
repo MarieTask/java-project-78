@@ -10,7 +10,10 @@ public class Main {
         Validator v = new Validator();
         NumberSchema schema = v.number();
 
-        System.out.println(schema.required().isValid("5"));
+        System.out.println(schema.positive().isValid(null));
+        System.out.println(schema.positive().required().isValid(null));
+        System.out.println(schema.required().positive().isValid(null));
+        System.out.println(schema.required().isValid(null));
 
     }
 
