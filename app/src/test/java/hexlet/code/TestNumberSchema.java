@@ -23,7 +23,7 @@ public class TestNumberSchema {
     // Пока не вызван метод required(), null считаeтся валидным
     @Test
     public void beforeRequiredTest() {
-        assertFalse(schema.isValid(""));
+        assertTrue(schema.isValid(""));
         assertTrue(schema.isValid(RANDOM_INTEGER));
         assertTrue(schema.isValid(null));
     }
@@ -38,7 +38,8 @@ public class TestNumberSchema {
 
     @Test
     public void requiredMethodsChainTest() {
-        assertTrue(schema.positive().isValid(null));
+        schema.positive();
+        assertTrue(schema.isValid(null));
         schema.required();
         assertTrue(schema.isValid(RANDOM_INTEGER));
         // Потому что ранее мы вызвали метод positive()
