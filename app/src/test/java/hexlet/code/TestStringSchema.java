@@ -4,6 +4,7 @@ import hexlet.code.schemas.StringSchema;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static java.lang.String.valueOf;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -49,11 +50,11 @@ public class TestStringSchema {
         assertFalse(schema.minLength(WRONG_LENGTH).isValid("whatthe"));
     }
     @Test
-    public void firstMinLengthMethodsChainTest() {
-        schema.contains(String.valueOf(RANDOM_INTEGER));
-        assertTrue(schema.isValid(RANDOM_INTEGER));
-        assertFalse(schema.isValid(RIGHT_LENGTH));
+    public void firstContainsMethodsChainTest() {
+        schema.contains(valueOf(RANDOM_INTEGER));
+        assertTrue(schema.isValid(valueOf(RANDOM_INTEGER)));
+        assertFalse(schema.isValid(valueOf(RIGHT_LENGTH)));
         schema.required();
-        assertTrue(schema.isValid(RANDOM_INTEGER));
+        assertTrue(schema.isValid(valueOf(RANDOM_INTEGER)));
     }
 }
