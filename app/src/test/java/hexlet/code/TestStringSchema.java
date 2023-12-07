@@ -37,7 +37,7 @@ public class TestStringSchema {
     }
 
     @Test
-    public void requiredMethodsChainTest() {
+    public void firstRequiredMethodsChainTest() {
         schema.required();
         schema.contains("wh");
         assertTrue(schema.isValid("what does the fox say")); // true
@@ -47,5 +47,13 @@ public class TestStringSchema {
         // Здесь уже false, так как добавлена еще одна проверка contains("whatthe")
         assertTrue(schema.minLength(RIGHT_LENGTH).isValid("whatthe"));
         assertFalse(schema.minLength(WRONG_LENGTH).isValid("whatthe"));
+    }
+    @Test
+    public void firstMinLengthMethodsChainTest() {
+        schema.contains(String.valueOf(RANDOM_INTEGER));
+        assertTrue(schema.isValid(RANDOM_INTEGER));
+        assertFalse(schema.isValid(RIGHT_LENGTH));
+        schema.required();
+        assertTrue(schema.isValid(RANDOM_INTEGER));
     }
 }

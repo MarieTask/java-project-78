@@ -3,6 +3,8 @@ package hexlet.code.schemas;
 import java.util.Objects;
 import java.util.function.Predicate;
 
+import static java.lang.String.valueOf;
+
 public class StringSchema extends BaseSchema {
 
     public StringSchema required() {
@@ -21,8 +23,8 @@ public class StringSchema extends BaseSchema {
         return this;
     }
 
-    public StringSchema contains(String userString) {
-        Predicate<Object> containsString = s -> ((String) s).contains(userString);
+    public StringSchema contains(Object userData) {
+        Predicate<Object> containsString = s -> ((String) s).contains(valueOf(userData));
         addCondition(containsString);
         return this;
     }
