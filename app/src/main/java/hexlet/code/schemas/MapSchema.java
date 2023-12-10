@@ -1,11 +1,12 @@
 package hexlet.code.schemas;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 public class MapSchema extends BaseSchema {
     public MapSchema required() {
-        Predicate<Object> mapConditions = s -> s instanceof Map;
+        Predicate<Object> mapConditions = s -> s instanceof Map && !(Objects.equals(s, null));
         addCondition(mapConditions);
         return this;
     }
