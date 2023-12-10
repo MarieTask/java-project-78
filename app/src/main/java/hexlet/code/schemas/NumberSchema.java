@@ -11,8 +11,8 @@ public class NumberSchema extends BaseSchema {
     }
 
     public NumberSchema positive() {
-        Predicate<Object> numConditions = s -> (Objects.equals(s, null)) || (int) s > 0;
-        addCondition(numConditions);
+        Predicate<Object> posConditions = s -> (Objects.equals(s, null)) || (int) s > 0;
+        addCondition(posConditions);
         return this;
     }
 
