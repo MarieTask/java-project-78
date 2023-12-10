@@ -29,18 +29,19 @@ public class TestMapSchema {
     public void requiredIsValidTest() {
         schema.required();
         assertFalse(schema.isValid(null));
-        assertTrue(schema.isValid(new HashMap()));
+        assertFalse(schema.isValid(""));
+        assertFalse(schema.isValid(1));
     }
 
     @Test
     public void firstRequiredMethodsChainTest() {
         schema.required();
-        schema.sizeOf(0);
         assertTrue(schema.isValid(new HashMap()));
         Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
-        assertFalse(schema.isValid(data));
+        assertTrue(schema.isValid(data));
         schema.sizeOf(2);
+        assertFalse(schema.isValid(data));
         data.put("key2", "value2");
         assertTrue(schema.isValid(data));
     }
