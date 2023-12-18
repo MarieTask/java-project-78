@@ -8,7 +8,8 @@ import java.util.function.Predicate;
 
 public class MapSchema extends BaseSchema {
     public MapSchema required() {
-        Predicate<Object> mapConditions = s -> s instanceof Map && !(Objects.equals(s, null));
+        super.setIsRequired();
+        Predicate<Object> mapConditions = s -> s instanceof Map;
         addCondition(mapConditions);
         return this;
     }

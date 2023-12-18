@@ -51,4 +51,11 @@ public class TestNumberSchema {
         assertTrue(schema.isValid(RANDOM_INTEGER));
         assertFalse(schema.isValid(ZERO));
     }
+
+    @Test
+    public void testValid() {
+        schema.positive();
+        assertTrue(schema.isValid(RANDOM_INTEGER));
+        assertTrue(schema.isValid(null));
+    }
 }

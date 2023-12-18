@@ -5,7 +5,8 @@ import java.util.function.Predicate;
 
 public class NumberSchema extends BaseSchema {
     public NumberSchema required() {
-        Predicate<Object> numConditions = s -> !(Objects.equals(s, null)) && !(s instanceof String);
+        super.setIsRequired();
+        Predicate<Object> numConditions = s -> s instanceof Integer;
         addCondition(numConditions);
         return this;
     }

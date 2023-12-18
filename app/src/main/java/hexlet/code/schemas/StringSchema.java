@@ -6,8 +6,8 @@ import java.util.function.Predicate;
 public class StringSchema extends BaseSchema {
 
     public StringSchema required() {
-        Predicate<Object> strConditions = s -> !(Objects.equals(s, null)) && !(Objects.equals(s, ""))
-                && !(s instanceof Integer);
+        super.setIsRequired();
+        Predicate<Object> strConditions = s -> !(Objects.equals(s, "")) && s instanceof String;
         addCondition(strConditions);
         return this;
     }

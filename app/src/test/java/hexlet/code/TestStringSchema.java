@@ -48,4 +48,11 @@ public class TestStringSchema {
         assertTrue(schema.minLength(RIGHT_LENGTH).isValid("whatthe"));
         assertFalse(schema.minLength(WRONG_LENGTH).isValid("whatthe"));
     }
+
+    @Test
+    public void testValid() {
+        schema.contains("wh");
+        assertTrue(schema.isValid("what does the fox say"));
+        assertTrue(schema.isValid(null));
+    }
 }

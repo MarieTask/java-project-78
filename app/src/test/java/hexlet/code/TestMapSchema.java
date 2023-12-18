@@ -109,4 +109,12 @@ public class TestMapSchema {
         human4.put("age", 25);
         assertTrue(schema.isValid(human4));
     }
+
+    @Test
+    public void testValid() {
+        Map<String, String> data = new HashMap<>();
+        data.put("key1", "value1");
+        assertTrue(schema.isValid(data));
+        assertTrue(schema.isValid(null));
+    }
 }
