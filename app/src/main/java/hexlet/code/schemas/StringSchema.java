@@ -5,10 +5,12 @@ import java.util.function.Predicate;
 
 public class StringSchema extends BaseSchema {
 
+    public StringSchema() {
+        super.conditions.add(s -> !(Objects.equals(s, "")) && s instanceof String);
+    }
+
     public StringSchema required() {
         super.setIsRequired();
-        Predicate<Object> strConditions = s -> !(Objects.equals(s, "")) && s instanceof String;
-        addCondition(strConditions);
         return this;
     }
 
@@ -17,13 +19,13 @@ public class StringSchema extends BaseSchema {
             throw new IndexOutOfBoundsException("Index less than zero!");
         }
         Predicate<Object> stringLength = s -> ((String) s).length() >= userNumber;
-        addCondition(stringLength);
+        super.addCondition(stringLength);
         return this;
     }
 
     public StringSchema contains(String userData) {
         Predicate<Object> containsString = s -> ((String) s).contains(userData);
-        addCondition(containsString);
+        super.addCondition(containsString);
         return this;
     }
 }

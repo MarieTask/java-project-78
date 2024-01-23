@@ -2,10 +2,11 @@ package hexlet.code.schemas;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 public abstract class BaseSchema {
-    private final List<Predicate<Object>> conditions = new LinkedList<>();
+    protected final List<Predicate<Object>> conditions = new LinkedList<>();
     private Boolean isRequired = Boolean.FALSE;
 
     //Indicates if the specified attribute is required
@@ -16,12 +17,9 @@ public abstract class BaseSchema {
         conditions.add(condition);
     }
     public final boolean isValid(Object obj) {
-        if (obj == null) {
-            return !isRequired;
+        if (!isRequired) {
+            return true;
         }
-        if (!conditions.stream().allMatch(condition -> condition.test(obj))) {
-            return false;
-        }
-        return true;
+        return (!conditions.stream().allMatch(condition -> condition.test(obj)));
     }
 }

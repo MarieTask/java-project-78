@@ -4,15 +4,18 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 public class NumberSchema extends BaseSchema {
+
+    public NumberSchema() {
+        super.conditions.add(s -> s instanceof Integer);
+    }
+
     public NumberSchema required() {
         super.setIsRequired();
-        Predicate<Object> numConditions = s -> s instanceof Integer;
-        addCondition(numConditions);
         return this;
     }
 
     public NumberSchema positive() {
-        Predicate<Object> posConditions = s -> (Objects.equals(s, null)) || (int) s > 0;
+        Predicate<Object> posConditions = s -> (int) s > 0;
         addCondition(posConditions);
         return this;
     }
