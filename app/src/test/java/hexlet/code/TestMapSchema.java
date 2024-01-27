@@ -14,8 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestMapSchema {
     private MapSchema schema;
     private static final int MIN_LENGTH = 3;
+    private static final int MAX_LENGTH = 100;
+    private static final int IN_RANGE = 25;
+    private static final int NEGATIVE = -5;
     private static final int MIN = 18;
     private static final int MAX = 35;
+
 
     @BeforeEach
     public void beforeEach() {
@@ -62,7 +66,7 @@ public class TestMapSchema {
 
         Map<String, Object> human1 = new HashMap<>();
         human1.put("name", "Kolya");
-        human1.put("age", 100);
+        human1.put("age", MAX_LENGTH);
         assertTrue(schema.isValid(human1));
 
         Map<String, Object> human2 = new HashMap<>();
@@ -77,8 +81,13 @@ public class TestMapSchema {
 
         Map<String, Object> human4 = new HashMap<>();
         human4.put("name", "Valya");
-        human4.put("age", -5);
+        human4.put("age", NEGATIVE);
         assertFalse(schema.isValid(human4));
+
+        Map<String, Object> human5 = new HashMap<>();
+        human3.put("name", " ");
+        human3.put("age", null);
+        assertTrue(schema.isValid(human3));
     }
 
     @Test
@@ -91,7 +100,7 @@ public class TestMapSchema {
 
         Map<String, Object> human1 = new HashMap<>();
         human1.put("name", "Kolya");
-        human1.put("age", 100);
+        human1.put("age", MAX_LENGTH);
         assertFalse(schema.isValid(human1));
 
         Map<String, Object> human2 = new HashMap<>();
@@ -106,7 +115,7 @@ public class TestMapSchema {
 
         Map<String, Object> human4 = new HashMap<>();
         human4.put("name", "Valya");
-        human4.put("age", 25);
+        human4.put("age", IN_RANGE);
         assertTrue(schema.isValid(human4));
     }
 
