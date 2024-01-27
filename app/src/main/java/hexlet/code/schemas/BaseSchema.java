@@ -1,6 +1,6 @@
 package hexlet.code.schemas;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -9,7 +9,7 @@ public abstract class BaseSchema {
     private Boolean isRequired = false;
 
     protected BaseSchema() {
-        this.conditions = new ArrayList<>();
+        this.conditions = new LinkedList<>();
     }
 
     //Indicates if the specified attribute is required
@@ -20,7 +20,7 @@ public abstract class BaseSchema {
         conditions.add(condition);
     }
     public final boolean isValid(Object obj) {
-        if (!isRequired) {
+        if (!isRequired && !conditions.stream().findFirst().isEmpty()) {
             return true;
         }
         return (!conditions.stream().allMatch(condition -> condition.test(obj)));
