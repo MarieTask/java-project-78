@@ -20,9 +20,9 @@ public abstract class BaseSchema {
         conditions.add(condition);
     }
     public final boolean isValid(Object obj) {
-        if (!isRequired && !conditions.stream().findFirst().equals(true)) {
+        if (!isRequired) {
             return true;
         }
-        return (!conditions.stream().allMatch(condition -> condition.test(obj)));
+        return (conditions.stream().allMatch(condition -> condition.test(obj)));
     }
 }
