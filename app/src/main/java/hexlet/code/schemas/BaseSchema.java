@@ -20,10 +20,8 @@ public abstract class BaseSchema {
         conditions.add(condition);
     }
     public final boolean isValid(Object obj) {
-        for (Predicate<Object> c: conditions) {
-            if (!c.test(obj) && !isRequired) {
-                return true;
-            }
+        if (!isRequired) {
+            return true;
         }
         return (!conditions.stream().allMatch(condition -> condition.test(obj)));
     }
