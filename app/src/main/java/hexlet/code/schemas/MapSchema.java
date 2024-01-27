@@ -1,10 +1,6 @@
 package hexlet.code.schemas;
 
-import hexlet.code.Validator;
-
 import java.util.Map;
-import java.util.Objects;
-import java.util.function.Predicate;
 
 public class MapSchema extends BaseSchema {
 
