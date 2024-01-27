@@ -60,7 +60,7 @@ public class TestMapSchema {
     public void shapeTest1() {
         Map<String, BaseSchema> schemas = new HashMap<>();
         schemas.put("name", Validator.string().required());
-        schemas.put("age", Validator.number().positive());
+        schemas.put("age", Validator.number().range(MIN, MAX));
 
         schema.shape(schemas);
 
