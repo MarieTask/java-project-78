@@ -85,9 +85,9 @@ public class TestMapSchema {
         assertFalse(schema.isValid(human4));
 
         Map<String, Object> human5 = new HashMap<>();
-        human3.put("name", " ");
-        human3.put("age", null);
-        assertTrue(schema.isValid(human3));
+        human5.put("name", " ");
+        human5.put("age", MIN_LENGTH);
+        assertTrue(schema.isValid(human5));
     }
 
     @Test
