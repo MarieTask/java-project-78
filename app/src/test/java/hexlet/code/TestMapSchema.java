@@ -30,7 +30,7 @@ public class TestMapSchema {
     @Test
     public void beforeRequiredTest() {
         assertTrue(schema.isValid(null));
-        assertTrue(schema.isValid(new HashMap()));
+        assertTrue(schema.isValid(new HashMap<>()));
         assertTrue(schema.isValid(""));
         assertTrue(schema.isValid(1));
     }
@@ -46,7 +46,7 @@ public class TestMapSchema {
     @Test
     public void firstRequiredMethodsChainTest() {
         schema.required();
-        assertTrue(schema.isValid(new HashMap()));
+        assertTrue(schema.isValid(new HashMap<>()));
         Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
         assertTrue(schema.isValid(data));
