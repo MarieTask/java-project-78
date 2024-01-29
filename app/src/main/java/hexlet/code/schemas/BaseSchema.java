@@ -21,6 +21,7 @@ public abstract class BaseSchema {
     }
     public final boolean isValid(Object obj) {
         if (!isRequired && !(conditions.get(0).test(obj))) {
+            System.out.println(conditions.get(0));
             return true;
         }
         return conditions.stream().allMatch(condition -> condition.test(obj));

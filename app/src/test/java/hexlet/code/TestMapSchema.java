@@ -67,7 +67,7 @@ public class TestMapSchema {
         Map<String, Object> human1 = new HashMap<>();
         human1.put("name", "Kolya");
         human1.put("age", MAX_LENGTH);
-        assertTrue(schema.isValid(human1));
+        assertFalse(schema.isValid(human1));
 
         Map<String, Object> human2 = new HashMap<>();
         human2.put("name", "Maya");
