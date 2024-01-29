@@ -5,15 +5,14 @@ import hexlet.code.schemas.MapSchema;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestMapSchema {
     private MapSchema schema;
-    private Validator validator;
     private static final int MIN_LENGTH = 3;
     private static final int MAX_LENGTH = 100;
     private static final int IN_RANGE = 25;
@@ -24,8 +23,7 @@ public class TestMapSchema {
 
     @BeforeEach
     public void beforeEach() {
-        validator = new Validator();
-        schema = validator.map();
+        schema = Validator.map();
     }
 
     // Пока не вызван метод required(), null и пустая строка считаются валидным

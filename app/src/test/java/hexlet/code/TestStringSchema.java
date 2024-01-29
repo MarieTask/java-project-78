@@ -12,12 +12,10 @@ public class TestStringSchema {
     private static final int WRONG_LENGTH = 25;
     private static final int RIGHT_LENGTH = 5;
     private StringSchema schema;
-    private Validator validator;
 
     @BeforeEach
     public void beforeEach() {
-        validator = new Validator();
-        schema = validator.string();
+        schema = Validator.string();
     }
 
         // Пока не вызван метод required(), null и пустая строка считаются валидным

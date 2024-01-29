@@ -14,12 +14,10 @@ public class TestNumberSchema {
     private static final int LESS_ZERO = -5;
     private static final int ZERO = 0;
     private NumberSchema schema;
-    private Validator validator;
 
     @BeforeEach
     public void beforeEach() {
-        validator = new Validator();
-        schema = validator.number();
+        schema = Validator.number();
     }
 
     // Пока не вызван метод required(), null считаeтся валидным
