@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestMapSchema {
     private MapSchema schema;
+    private Validator validator;
     private static final int MIN_LENGTH = 3;
     private static final int MAX_LENGTH = 100;
     private static final int IN_RANGE = 25;
@@ -23,7 +24,8 @@ public class TestMapSchema {
 
     @BeforeEach
     public void beforeEach() {
-        schema = Validator.map();
+        validator = new Validator();
+        schema = validator.map();
     }
 
     // Пока не вызван метод required(), null и пустая строка считаются валидным
