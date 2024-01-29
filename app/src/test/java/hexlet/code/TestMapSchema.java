@@ -86,7 +86,7 @@ public class TestMapSchema {
 
         Map<String, Object> human5 = new HashMap<>();
         human5.put("name", " ");
-        human5.put("age", MIN_LENGTH);
+        human5.put("age", IN_RANGE);
         assertTrue(schema.isValid(human5));
     }
 
