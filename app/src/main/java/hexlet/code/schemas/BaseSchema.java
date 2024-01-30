@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public abstract class BaseSchema {
-    protected final List<Predicate<Object>> conditions;
+public abstract class BaseSchema<T> {
+    protected final List<Predicate<T>> conditions;
     private Boolean isRequired = false;
 
     protected BaseSchema() {
@@ -16,10 +16,10 @@ public abstract class BaseSchema {
     protected final void setIsRequired() {
         this.isRequired = Boolean.TRUE;
     }
-    protected final void addCondition(Predicate<Object> condition) {
+    protected final void addCondition(Predicate<T> condition) {
         conditions.add(condition);
     }
-    public final boolean isValid(Object obj) {
+    public final boolean isValid(T obj) {
         if (!isRequired && !(conditions.get(0).test(obj))) {
             System.out.println(conditions.get(0));
             return true;
