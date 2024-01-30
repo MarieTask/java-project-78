@@ -2,7 +2,7 @@ package hexlet.code.schemas;
 
 import java.util.function.Predicate;
 
-public class NumberSchema<T> extends BaseSchema<T> {
+public final class NumberSchema<T> extends BaseSchema<T> {
 
     public NumberSchema() {
         super.conditions.add(s -> s instanceof Integer);

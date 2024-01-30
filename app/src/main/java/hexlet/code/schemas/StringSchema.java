@@ -3,7 +3,7 @@ package hexlet.code.schemas;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-public class StringSchema<T> extends BaseSchema<T> {
+public final class StringSchema<T> extends BaseSchema<T> {
 
     public StringSchema() {
         super.conditions.add(s -> !(Objects.equals(s, "")) && s instanceof String);

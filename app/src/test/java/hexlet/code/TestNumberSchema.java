@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestNumberSchema {
+public final class TestNumberSchema {
     private static final int RANDOM_INTEGER = 7;
     private static final int MIN_LENGTH = 5;
     private static final int MAX_LENGTH = 10;
