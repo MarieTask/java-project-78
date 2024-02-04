@@ -23,7 +23,7 @@ public final class TestNumberSchema {
     // Пока не вызван метод required(), null считаeтся валидным
     @Test
     public void beforeRequiredTest() {
-        assertTrue(schema.isValid(""));
+        assertTrue(schema.isValid(Integer.valueOf("")));
         assertTrue(schema.isValid(RANDOM_INTEGER));
         assertTrue(schema.isValid(null));
     }

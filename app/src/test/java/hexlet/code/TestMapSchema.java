@@ -32,6 +32,7 @@ public final class TestMapSchema {
         assertTrue(schema.isValid(null));
         assertTrue(schema.isValid(new HashMap<>()));
         assertTrue(schema.isValid(""));
+        assertTrue(schema.isValid(" "));
         assertTrue(schema.isValid(1));
     }
 
@@ -40,6 +41,7 @@ public final class TestMapSchema {
         schema.required();
         assertFalse(schema.isValid(null));
         assertFalse(schema.isValid(""));
+        assertFalse(schema.isValid(" "));
         assertFalse(schema.isValid(1));
     }
 

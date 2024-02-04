@@ -2,7 +2,7 @@ package hexlet.code.schemas;
 
 import java.util.Map;
 
-public final class MapSchema<String, T> extends BaseSchema<T> {
+public final class MapSchema extends BaseSchema<Map<?, ?>> {
 
     public MapSchema() {
         super.conditions.add(s -> s instanceof Map);
@@ -17,11 +17,11 @@ public final class MapSchema<String, T> extends BaseSchema<T> {
         if (countPairs < 0) {
             throw new IndexOutOfBoundsException("Count of pairs key-value less than zero!");
         }
-        super.addCondition(s -> ((Map<?, ?>) s).size() == countPairs);
+        super.addCondition(s -> s.size() == countPairs);
         return this;
     }
-    public MapSchema shape(Map<String, BaseSchema<T>> map) {
-        map.keySet().forEach(key -> super.addCondition(s -> map.get(key).isValid((T) ((Map<?, ?>) s).get(key))));
+    public MapSchema shape(Map<String, BaseSchema<String>> map) {
+        map.keySet().forEach(key -> super.addCondition(s -> map.get(key).isValid((String) s.get(key))));
         return this;
     }
 }

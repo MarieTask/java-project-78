@@ -22,7 +22,7 @@ public final class TestStringSchema {
     @Test
     public void beforeRequiredTest() {
         assertTrue(schema.isValid(""));
-        assertTrue(schema.isValid(RANDOM_INTEGER));
+        assertTrue(schema.isValid(String.valueOf(RANDOM_INTEGER)));
         assertTrue(schema.isValid(null));
         assertTrue(schema.isValid("String"));
     }
