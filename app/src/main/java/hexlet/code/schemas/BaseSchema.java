@@ -19,7 +19,7 @@ public abstract class BaseSchema<T> {
     protected final void addCondition(Predicate<T> condition) {
         conditions.add(condition);
     }
-    public boolean isValid(T obj) {
+    public final boolean isValid(T obj) {
         if (!isRequired && !(conditions.get(0).test(obj))) {
             System.out.println(conditions.get(0));
             return true;
