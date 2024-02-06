@@ -18,7 +18,7 @@ public final class StringSchema extends BaseSchema<String> {
         if (userNumber < 0) {
             throw new IndexOutOfBoundsException("Index less than zero!");
         }
-        Predicate<String> stringLength = s -> ((String) s).length() >= userNumber;
+        Predicate<String> stringLength = s -> s.length() >= userNumber;
         super.addCondition(stringLength);
         return this;
     }

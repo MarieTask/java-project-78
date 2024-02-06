@@ -23,7 +23,6 @@ public final class TestNumberSchema {
     // Пока не вызван метод required(), null считаeтся валидным
     @Test
     public void beforeRequiredTest() {
-        assertTrue(schema.isValid(Integer.valueOf("")));
         assertTrue(schema.isValid(RANDOM_INTEGER));
         assertTrue(schema.isValid(null));
     }
@@ -32,7 +31,6 @@ public final class TestNumberSchema {
     public void requiredIsValidTest() {
         schema.required();
         assertFalse(schema.isValid(null));
-        assertFalse(schema.isValid(Integer.valueOf("")));
         assertTrue(schema.isValid(RANDOM_INTEGER));
         assertTrue(schema.isValid(LESS_ZERO));
     }
