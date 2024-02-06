@@ -24,7 +24,7 @@ public final class StringSchema extends BaseSchema<String> {
     }
 
     public StringSchema contains(String userData) {
-        Predicate<String> containsString = s -> ((String) s).contains(userData);
+        Predicate<String> containsString = s -> s.contains(userData);
         super.addCondition(containsString);
         return this;
     }

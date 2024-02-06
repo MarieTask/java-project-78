@@ -31,18 +31,13 @@ public final class TestMapSchema {
     public void beforeRequiredTest() {
         assertTrue(schema.isValid(null));
         assertTrue(schema.isValid(new HashMap<>()));
-        assertTrue(schema.isValid(""));
-        assertTrue(schema.isValid(" "));
-        assertTrue(schema.isValid(1));
     }
 
     @Test
     public void requiredIsValidTest() {
         schema.required();
         assertFalse(schema.isValid(null));
-        assertFalse(schema.isValid(""));
-        assertFalse(schema.isValid(" "));
-        assertFalse(schema.isValid(1));
+        assertTrue(schema.isValid(new HashMap<>()));
     }
 
     @Test
@@ -59,10 +54,10 @@ public final class TestMapSchema {
     }
 
     @Test
-    public void shapeTest1() {
-        Map<String, BaseSchema> schemas = new HashMap<>();
-        schemas.put("name", Validator.string().required());
-        schemas.put("age", Validator.number().range(MIN, MAX));
+    public <T> void shapeTest1() {
+        Map<String, BaseSchema<T>> schemas = new HashMap<>();
+        schemas.put("name", (BaseSchema<T>) Validator.string().required());
+        schemas.put("age", (BaseSchema<T>) Validator.number().range(MIN, MAX));
 
         schema.shape(schemas);
 
@@ -93,10 +88,10 @@ public final class TestMapSchema {
     }
 
     @Test
-    public void shapeTest2() {
-        Map<String, BaseSchema> schemas = new HashMap<>();
-        schemas.put("name", Validator.string().minLength(MIN_LENGTH));
-        schemas.put("age", Validator.number().range(MIN, MAX).required());
+    public <T> void shapeTest2() {
+        Map<String, BaseSchema<T>> schemas = new HashMap<>();
+        schemas.put("name", (BaseSchema<T>) Validator.string().minLength(MIN_LENGTH));
+        schemas.put("age", (BaseSchema<T>) Validator.number().range(MIN, MAX).required());
 
         schema.shape(schemas);
 

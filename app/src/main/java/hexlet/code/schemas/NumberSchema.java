@@ -14,13 +14,13 @@ public final class NumberSchema extends BaseSchema<Integer> {
     }
 
     public NumberSchema positive() {
-        Predicate<Integer> posConditions = s -> (int) s > 0;
+        Predicate<Integer> posConditions = s -> s > 0;
         addCondition(posConditions);
         return this;
     }
 
     public NumberSchema range(int min, int max) {
-        Predicate<Integer> numRange = s -> (int) s >= min && (int) s <= max;
+        Predicate<Integer> numRange = s -> s >= min && s <= max;
         addCondition(numRange);
         return this;
     }

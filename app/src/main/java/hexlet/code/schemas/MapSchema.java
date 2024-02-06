@@ -20,8 +20,8 @@ public final class MapSchema extends BaseSchema<Map<?, ?>> {
         super.addCondition(s -> s.size() == countPairs);
         return this;
     }
-    public MapSchema shape(Map<String, BaseSchema<String>> map) {
-        map.keySet().forEach(key -> super.addCondition(s -> map.get(key).isValid((String) s.get(key))));
+    public <T> MapSchema shape(Map<String, BaseSchema<T>> schemas) {
+        schemas.keySet().forEach(key -> super.addCondition(s -> schemas.get(key).isValid((T) s.get(key))));
         return this;
     }
 }
